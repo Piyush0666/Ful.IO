@@ -1,0 +1,35 @@
+package com.practice.DataStructure.day4.day5;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegexPattern{
+   public static boolean isValid(String s)
+    {
+
+        /* The given argument to compile() method
+         is regular expression. With the help of
+         regular expression we can validate mobile
+         number.
+         1) Begins with 0 or 91
+         2) Then contains 6,7 or 8 or 9.
+         3) Then contains 9 digits      */
+        Pattern p = Pattern.compile("^(\\+0?1\\s)?\\(?\\d{3}\\)?[\\s.-]\\d{3}[\\s.-]\\d{4}$");
+        /* Pattern class contains matcher() method
+         to find matching between given number
+        and regular expression
+         */
+        Matcher m = p.matcher(s);
+        return (m.find() && m.group().equals(s));
+    }
+   // Driver code
+    public static void main(String[] args)
+    {
+        String s = "212.456.7890";//here we will pass any Regex Pattern
+
+        if (isValid(s))
+            System.out.println("Valid Number");
+        else
+            System.out.println("Invalid Number");
+    }
+}
